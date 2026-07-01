@@ -7,3 +7,5 @@ data/pdfs
 __pycache__
 
 /vector_db
+
+results.json

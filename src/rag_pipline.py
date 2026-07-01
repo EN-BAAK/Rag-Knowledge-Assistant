@@ -1,3 +1,5 @@
+from pathlib import Path
+
 from src import EmbeddingModel, LLM, load_all_pdfs, create_chunks, VectorStore
 
 class RAGPipeline:
@@ -5,7 +7,7 @@ class RAGPipeline:
         self.pdf_folder = pdf__folder
         self.chunk_size = chunk_size
         self.chunk_overlap = chunk_overlap
-        self.vector_db_path = vector_db_path
+        self.vector_db_path = Path(vector_db_path)
         self.top_k = top_k
 
         self.db = None
@@ -28,6 +30,21 @@ class RAGPipeline:
         db.add(vectors, chunks)
         db.save(self.vector_db_path)
         self.db = db
+
+    def load(self):
+        faiss_file = self.vector_db_path / "index.faiss"
+        metadata_file = self.vector_db_path / "metadata.pkl"
+
+        if faiss_file.exists() and metadata_file.exists():
+            print(f"Loading existing vector database from {self.vector_db_path}...")
+            
+            db = VectorStore(dimension=0) 
+            db.load(self.vector_db_path)
+            self.db = db
+            return True
+        else:
+            print("No existing vector database found.")
+            return False
 
     def ask(self, question):
         query_vector= self.embedding_model.embed_query(question)

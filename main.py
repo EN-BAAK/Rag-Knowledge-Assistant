@@ -11,7 +11,7 @@ rag = RAGPipeline(
     vector_db_path=VECTOR_DB
 )
 
-rag.build()
+rag.load()
 
 question = input("What is your question? \n")
 answer = rag.ask(question)
