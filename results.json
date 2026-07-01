@@ -1,0 +1,83 @@
+[
+    {
+        "config": {
+            "chunk_size": 200,
+            "overlap": 20,
+            "top_k": 3
+        },
+        "question": "What is attention mechanism?",
+        "answer": "Based on the provided context, self-attention (sometimes called intra-attention) is an attention mechanism relating different positions."
+    },
+    {
+        "config": {
+            "chunk_size": 200,
+            "overlap": 20,
+            "top_k": 3
+        },
+        "question": "Explain transformer architecture",
+        "answer": ""
+    },
+    {
+        "config": {
+            "chunk_size": 200,
+            "overlap": 20,
+            "top_k": 3
+        },
+        "question": "What problem does this paper solve?",
+        "answer": "I don't know."
+    },
+    {
+        "config": {
+            "chunk_size": 500,
+            "overlap": 50,
+            "top_k": 5
+        },
+        "question": "What is attention mechanism?",
+        "answer": ""
+    },
+    {
+        "config": {
+            "chunk_size": 500,
+            "overlap": 50,
+            "top_k": 5
+        },
+        "question": "Explain transformer architecture",
+        "answer": "Based on the provided context, the Transformer architecture consists of the following technical components:\n\n*   **"
+    },
+    {
+        "config": {
+            "chunk_size": 500,
+            "overlap": 50,
+            "top_k": 5
+        },
+        "question": "What problem does this paper solve?",
+        "answer": "I don't know"
+    },
+    {
+        "config": {
+            "chunk_size": 1000,
+            "overlap": 100,
+            "top_k": 5
+        },
+        "question": "What is attention mechanism?",
+        "answer": "Based on the provided context, the attention mechanism is a process that allows positions in a"
+    },
+    {
+        "config": {
+            "chunk_size": 1000,
+            "overlap": 100,
+            "top_k": 5
+        },
+        "question": "Explain transformer architecture",
+        "answer": "Based on the provided context, the Transformer architecture consists of the following technical components:\n\n*   **"
+    },
+    {
+        "config": {
+            "chunk_size": 1000,
+            "overlap": 100,
+            "top_k": 5
+        },
+        "question": "What problem does this paper solve?",
+        "answer": "I don't know"
+    }
+]

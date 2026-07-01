@@ -1,64 +1,19 @@
-from src import load_all_pdfs, create_chunks, EmbeddingModel, VectorStore, LLM
+from src import RAGPipeline
 
-pdf_folder = "./data/pdfs"
+PDF = "./data/pdfs"
+VECTOR_DB = "./vector_db"
 
-documents = load_all_pdfs(pdf_folder)
-
-print("Total pages:",len(documents))
-
-chunks = create_chunks(
-    documents,
+rag = RAGPipeline(
+    pdf__folder=PDF,
+    chunk_overlap=50,
     chunk_size=500,
-    chunk_overlap=50
+    top_k=3,
+    vector_db_path=VECTOR_DB
 )
 
-texts = [c["text"] for c in chunks]
+rag.build()
 
-embedding_model = EmbeddingModel()
-vectors = embedding_model.embed_documents(texts)
+question = input("What is your question? \n")
+answer = rag.ask(question)
 
-db = VectorStore(dimension=vectors.shape[1])
-db.add(vectors, chunks)
-db.save("./vector_db")
-
-question = "What is attention mechanism?"
-query_vector = embedding_model.embed_query(question)
-
-retrieved_chunks = db.search(query_vector, k=4)
-
-context = "\n\n".join(
-    [
-        f"[PAGE {c['page']}]: {c['text']}"
-        for c in retrieved_chunks
-    ]
-)
-
-prompt = f"""
-CONTEXT:
-{context}
-
-QUESTION:
-{question}
-
-INSTRUCTIONS:
-- Answer ONLY using the context above
-- If the answer is not in the context, say "I don't know"
-- Be precise and technical
-"""
-
-llm = LLM()
-answer = llm.generate(prompt)
-
-print("\n" + "="*50)
-print("QUESTION:")
-print(question)
-
-print("\n" + "="*50)
-print("ANSWER:")
-print(answer)
-
-print("\n" + "="*50)
-print("RETRIEVED CHUNKS:")
-for c in retrieved_chunks:
-    print(f"\nPAGE {c['page']}")
-    print(c['text'][:200] + "...")
+print("Answer:", answer)

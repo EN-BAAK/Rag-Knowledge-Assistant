@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 class LLM:
-    def __init__(self, model="gemini-3.5-flash"):
+    def __init__(self, model="gemini-2.5-flash"):
         api_key = os.getenv("GEMINI_API_KEY")
 
         self.client = ChatGoogleGenerativeAI(
