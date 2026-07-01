@@ -1,0 +1,23 @@
+# PDF loading
+pypdf==5.1.0
+
+
+# LangChain core utilities
+langchain==0.3.14
+langchain-community==0.3.14
+
+
+# Text splitting
+langchain-text-splitters==0.3.5
+
+
+# Environment variables (later for API keys)
+python-dotenv==1.0.1
+
+
+# Data processing
+numpy==2.2.1
+
+
+# Progress bars
+tqdm==4.67.1
