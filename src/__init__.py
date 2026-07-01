@@ -1,4 +1,6 @@
 from .chunker import create_chunks
 from .loader import load_pdf
+from .embedding import EmbeddingModel
+from .vectorstore import VectorStore
 
-__all__ = ["load_pdf", "create_chunks"]
+__all__ = ["load_pdf", "create_chunks", "EmbeddingModel", "VectorStore"]
