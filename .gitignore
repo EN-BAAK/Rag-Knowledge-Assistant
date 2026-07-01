@@ -3,3 +3,7 @@ data/pdfs
 /venv
 
 .env
+
+__pycache__
+
+/vector_db

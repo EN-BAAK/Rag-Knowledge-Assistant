@@ -5,6 +5,7 @@ pypdf==5.1.0
 # LangChain core utilities
 langchain==0.3.14
 langchain-community==0.3.14
+langchain-google-genai>=2.0.0
 
 
 # Text splitting
@@ -29,6 +30,3 @@ sentence-transformers==3.3.1
 
 # Vector database
 faiss-cpu==1.9.0.post1
-
-# LLM API
-openai==1.40.0

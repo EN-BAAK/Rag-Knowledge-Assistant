@@ -1,8 +1,10 @@
-from src import load_pdf, create_chunks, EmbeddingModel, VectorStore, LLM
+from src import load_all_pdfs, create_chunks, EmbeddingModel, VectorStore, LLM
 
-pdf_path = "./data/pdf_files/attention.pdf"
+pdf_folder = "./data/pdfs"
 
-documents = load_pdf(pdf_path)
+documents = load_all_pdfs(pdf_folder)
+
+print("Total pages:",len(documents))
 
 chunks = create_chunks(
     documents,
@@ -17,6 +19,7 @@ vectors = embedding_model.embed_documents(texts)
 
 db = VectorStore(dimension=vectors.shape[1])
 db.add(vectors, chunks)
+db.save("./vector_db")
 
 question = "What is attention mechanism?"
 query_vector = embedding_model.embed_query(question)

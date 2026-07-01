@@ -8,6 +8,7 @@ def create_chunks(documents, chunk_size=500, chunk_overlap=50):
     )
 
     chunks = []
+    chunk_id = 0
 
     for doc in documents:
         split_texts = splitter.split_text(doc["text"])
@@ -15,9 +16,13 @@ def create_chunks(documents, chunk_size=500, chunk_overlap=50):
         for text in split_texts:
             chunks.append(
                 {
-                    "page": doc["page"],
-                    "text": text,
+                "chunk_id": chunk_id,
+                "source": doc["source"],
+                "page": doc["page"],
+                "text": text
                 }
             )
+
+            chunk_id += 1
 
     return chunks
